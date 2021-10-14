@@ -31,7 +31,7 @@ All needed commands are listed in the Makefile. To see the list of all commands:
 
 ## Run
 
-`make run`
+`make run` or via docker `make run_docker_locally`
 
 ## Use
 
