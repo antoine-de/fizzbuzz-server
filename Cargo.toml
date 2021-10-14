@@ -1,0 +1,9 @@
+[package]
+name = "fizzbuzz-server"
+version = "0.1.0"
+edition = "2018"
+
+[dependencies]
+actix-web = "3"
+actix-rt = "2"
+serde = "1.0.130"
