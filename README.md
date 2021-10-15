@@ -1,6 +1,5 @@
 # fizzbuzz-server
-
-Exercise: Write a simple fizz-buzz REST server.
+## Exercise: Write a simple fizz-buzz REST server.
 
 "The original fizz-buzz consists in writing all numbers from 1 to 100, and just replacing all multiples of 3 by ""fizz"", all multiples of 5 by ""buzz"", and all multiples of 15 by ""fizzbuzz"".
 The output would look like this: ""1,2,fizz,4,buzz,fizz,7,8,fizz,buzz,11,fizz,13,14,fizzbuzz,16,...""."
@@ -37,7 +36,14 @@ All needed commands are listed in the Makefile. To see the list of all commands:
 
 The server runs at `localhost:8080`, you can query it with:
 
-`curl "http://localhost:8080/fizzbuzz?int1=3&int2=5&limit=20&str1=fizz&str2=buzz"`
+* `curl "http://localhost:8080/fizzbuzz?int1=3&int2=5&limit=20&str1=fizz&str2=buzz"`
+
+you can also query the `/stats/` endpoint with:
+
+`curl "http://localhost:8080/stats"`
 
 ## Test
+
+run unit and integration tests with:
+
 `make test`
