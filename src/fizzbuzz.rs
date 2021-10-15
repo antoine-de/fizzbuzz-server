@@ -1,24 +1,15 @@
-use serde::Deserialize;
-
-#[derive(Deserialize)]
-pub struct Params {
-    limit: u8,
-    #[serde(rename = "str1")]
-    fizz_name: String,
-    #[serde(rename = "str2")]
-    buzz_name: String,
-    #[serde(rename = "int1")]
-    fizz_value: u8,
-    #[serde(rename = "int2")]
-    buzz_value: u8,
-}
+use crate::model::{FizzBuzzParams, State};
 
 #[actix_web::get("/fizzbuzz")]
-pub async fn fizzbuzz_api(params: actix_web::web::Query<Params>) -> impl actix_web::Responder {
+pub async fn fizzbuzz_api(
+    params: actix_web::web::Query<FizzBuzzParams>,
+    state: actix_web::web::Data<State>,
+) -> impl actix_web::Responder {
+    state.register(&params);
     fizzbuzz(params.into_inner()).join(",")
 }
 
-fn fizzbuzz(params: Params) -> Vec<String> {
+fn fizzbuzz(params: FizzBuzzParams) -> Vec<String> {
     (1..=params.limit)
         .map(|v| {
             let div_by_fizz = v % params.fizz_value == 0;
@@ -41,7 +32,7 @@ mod test {
     #[test]
     fn basic_fizzbuzz() {
         assert_eq!(
-            fizzbuzz(Params {
+            fizzbuzz(FizzBuzzParams {
                 limit: 20,
                 fizz_name: "fizz".to_string(),
                 fizz_value: 3,
@@ -57,7 +48,7 @@ mod test {
     #[test]
     fn fizzbuzz_to_zero() {
         assert_eq!(
-            fizzbuzz(Params {
+            fizzbuzz(FizzBuzzParams {
                 limit: 0,
                 fizz_name: "fizz".to_string(),
                 fizz_value: 3,
