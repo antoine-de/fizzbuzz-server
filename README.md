@@ -26,11 +26,11 @@ All needed commands are listed in the Makefile. To see the list of all commands:
 
 ## Build
 
-`make build`
+`make build`if you have rust, `make build_docker` to only build the docker.
 
 ## Run
 
-`make run` or via docker `make run_docker_locally`
+`make run` or via docker `make run_docker_locally`.
 
 ## Use
 
